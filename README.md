@@ -38,7 +38,7 @@ Example Playbook
     - hosts: all
       become: yes
       roles:
-        - role: ansible-library-package-update
+        - {role: r0mdau.package_update }
 
 *Inside playbook `group_vars/all.yml`*:
 
