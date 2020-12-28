@@ -12,7 +12,7 @@ galaxy_info:
     - name: Debian
       versions:
         - all
-    - name: Redhat
+    - name: EL
       versions:
         - 6
         - 7
