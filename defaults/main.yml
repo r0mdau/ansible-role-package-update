@@ -1,0 +1,5 @@
+---
+
+allow_reboot: false
+before_reboot_stop: []
+hold_packages: []

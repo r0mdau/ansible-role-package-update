@@ -1,0 +1,5 @@
+---
+
+- name: Reboot the host
+  reboot:
+    reboot_timeout: 3600

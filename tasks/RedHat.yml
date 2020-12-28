@@ -1,0 +1,31 @@
+---
+
+- name: Install yum utils and versionlock packages
+  yum: name={{ item }} state=present update_cache=yes
+  loop:
+    - yum-utils
+    - yum-plugin-versionlock
+
+- name: Yum versionlock packages versions
+  command: "yum versionlock add {{ item }}"
+  loop: "{{ hold_packages }}"
+  args:
+    warn: false
+
+- name: Upgrade all packages
+  yum: name=* state=latest
+
+# no better way, perhaps using command: "yum versionlock cear"
+- name: Yum delete versionlock packages
+  command: "yum versionlock delete 0:{{ item }}-*"
+  loop: "{{ hold_packages }}"
+  args:
+    warn: false
+
+- name: Check if a reboot is needed
+  command: needs-restarting
+  register: reboot_required
+
+- debug:
+    msg: System {{ inventory_hostname }} need REBOOT !
+  when: reboot_required.stdout | length > 0

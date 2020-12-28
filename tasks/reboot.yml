@@ -1,0 +1,8 @@
+---
+
+- name: Stop services before reboot
+  service:
+    name: "{{ item }}"
+    state: stopped
+  loop: "{{ before_reboot_stop }}"
+  notify: Reboot the host
