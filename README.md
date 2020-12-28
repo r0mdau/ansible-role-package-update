@@ -1,7 +1,7 @@
 Ansible Role: package-update
 =========
 
-Role to update Debian or Redhat packages. 
+Role to update Debian, RHEL and CentOS packages.
 
 Updates all packages except blacklisted, gracefully shutdown services and allow or not reboot if needed.
 
