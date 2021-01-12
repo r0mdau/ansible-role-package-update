@@ -3,4 +3,4 @@
 allow_reboot: false
 before_reboot_stop: []
 hold_packages: []
-remove_unused_dependencies : true
+remove_unused_dependencies: true
