@@ -3,7 +3,11 @@ Ansible Role: package-update
 
 Role to update Debian, RHEL and CentOS packages.
 
-Updates all packages except blacklisted, gracefully shutdown services and allow or not reboot if needed.
+Features :
+* update all packages except blacklisted 
+* gracefully shutdown services 
+* allow or not reboot if needed
+* remove unused dependencies
 
 Requirements
 ------------
@@ -26,6 +30,10 @@ List services to gracefully shutdown before reboot.
     hold_packages: []
 
 List packages to hold = packages to not upgrade.
+
+    remove_unused_dependencies: true
+
+Choose to clean unused dependencies after upgrade.
 
 Dependencies
 ------------

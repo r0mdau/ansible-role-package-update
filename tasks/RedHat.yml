@@ -20,6 +20,12 @@
     name: "*"
     state: latest
 
+- name: Remove unused dependencies (no longer required)
+  yum:
+    autoremove: yes
+  when:
+    - remove_unused_dependencies
+
 # no better way, perhaps using command: "yum versionlock cear"
 - name: Yum delete versionlock packages
   command: "yum versionlock delete 0:{{ item }}-*"

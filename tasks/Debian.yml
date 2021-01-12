@@ -17,6 +17,18 @@
     upgrade: dist
     force_apt_get: yes
 
+- name: Remove unused dependencies (no longer required)
+  apt:
+    autoremove: yes
+  when:
+    - remove_unused_dependencies
+
+- name: Clean useless packages from the cache
+  apt:
+    autoclean: yes
+  when:
+    - remove_unused_dependencies
+
 - name: Apt unhold packages versions
   command: "apt-mark unhold {{ item }}"
   loop: "{{ hold_packages }}"
