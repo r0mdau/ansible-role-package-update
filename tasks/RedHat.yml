@@ -1,7 +1,10 @@
 ---
 
 - name: Install yum utils and versionlock packages
-  yum: name={{ item }} state=present update_cache=yes
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
   loop:
     - yum-utils
     - yum-plugin-versionlock
@@ -13,7 +16,9 @@
     warn: false
 
 - name: Upgrade all packages
-  yum: name=* state=latest
+  yum:
+    name: "*"
+    state: latest
 
 # no better way, perhaps using command: "yum versionlock cear"
 - name: Yum delete versionlock packages
